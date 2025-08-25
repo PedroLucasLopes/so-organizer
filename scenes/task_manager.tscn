@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7vj2rsp5ywq"]
+
+[ext_resource type="Texture2D" uid="uid://cv3e4ckimc4iq" path="res://assets/task_manager.png" id="1_um23b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um23b"]
+size = Vector2(320, 16)
+
+[node name="TaskManager" type="StaticBody2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_um23b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_um23b")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj6m1gc61t8py"]
+
+[ext_resource type="Texture2D" uid="uid://c28mlwshh3upe" path="res://assets/so_icon.png" id="1_sietv"]
+
+[node name="SOLogo" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sietv")

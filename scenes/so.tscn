@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cco1opoteo5tp"]
+
+[ext_resource type="Texture2D" uid="uid://l2myvf1ws5vc" path="res://assets/wallpaper_default.png" id="1_dqh6v"]
+[ext_resource type="PackedScene" uid="uid://df7vj2rsp5ywq" path="res://scenes/task_manager.tscn" id="1_x8ele"]
+[ext_resource type="PackedScene" uid="uid://bgtr5j6mvd6k3" path="res://scenes/note.tscn" id="3_28fkv"]
+[ext_resource type="PackedScene" uid="uid://cj6m1gc61t8py" path="res://scenes/so_logo.tscn" id="4_jlkqj"]
+
+[node name="SO" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_dqh6v")
+
+[node name="TaskManager" parent="." instance=ExtResource("1_x8ele")]
+position = Vector2(160, 172)
+
+[node name="Note4" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(204, 30)
+
+[node name="Note5" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(263, 36)
+
+[node name="Note3" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(222, 88)
+
+[node name="Note6" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(71, 40)
+
+[node name="Note2" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(103, 40)
+
+[node name="Note" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(66, 63)
+
+[node name="SOLogo" parent="." instance=ExtResource("4_jlkqj")]
+position = Vector2(9, 173)
