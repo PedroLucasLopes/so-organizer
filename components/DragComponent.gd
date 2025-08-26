@@ -1,5 +1,8 @@
 class_name DragComponent extends Node
 
+signal started_snap
+signal snapped
+
 @export var node: Node2D
 @export var area_2d: Area2D
 @export var sprite: Sprite2D
@@ -14,6 +17,8 @@ var scale_tween: Tween
 
 var last_pos: Vector2
 var max_card_rotation: float = 12.5
+
+var target_pos : Vector2 = Vector2.ZERO
 
 static var current_drag: DragComponent = null
 
@@ -37,6 +42,9 @@ func _on_area_mouse_exited() -> void:
 func mouse_drag(delta: float) -> void:
 	if draggable and Input.is_action_pressed("click"):
 		current_drag = self
+		if Input.is_action_just_pressed("click"):
+			started_snap.emit()
+			print("Começou a snapar")
 	
 	if current_drag == self and Input.is_action_pressed("click"):
 		node.global_position = node.get_global_mouse_position()
@@ -52,7 +60,8 @@ func mouse_drag(delta: float) -> void:
 		node.z_index = 0
 
 func snap_object() -> void:
-	var target_pos: Vector2 = (node.get_global_mouse_position() / tile_size).floor() * tile_size + tile_size / 2
+	target_pos = (node.get_global_mouse_position() / tile_size).floor() * tile_size + tile_size / 2
+	snapped.emit(target_pos) ## emite um sinal que snappou
 	var tween := create_tween()
 	tween.tween_property(node, "global_position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	

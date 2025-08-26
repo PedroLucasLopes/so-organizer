@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgtr5j6mvd6k3"]
+[gd_scene load_steps=4 format=3 uid="uid://bgtr5j6mvd6k3"]
 
 [ext_resource type="Texture2D" uid="uid://b8xtfvmrmgpc3" path="res://assets/images/note.png" id="1_t3yvt"]
+[ext_resource type="Script" uid="uid://crfvhgt55t3rd" path="res://scenes/note.gd" id="1_43c4j"]
+[ext_resource type="Texture2D" uid="uid://b8xtfvmrmgpc3" path="res://assets/note.png" id="1_t3yvt"]
 [ext_resource type="Script" uid="uid://4xlrtfaylfy3" path="res://components/DragComponent.gd" id="2_1bnk6"]
 
 [node name="Note" type="Node2D"]
+script = ExtResource("1_43c4j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_t3yvt")
@@ -15,6 +18,7 @@ collision_layer = 2
 polygon = PackedVector2Array(-5, -6, 5, -6, 5, -5, 6, -5, 6, 6, 5, 6, 5, 7, -5, 7, -5, 6, -6, 6, -6, -5, -5, -5)
 
 [node name="DragComponent" type="Node" parent="." node_paths=PackedStringArray("node", "area_2d", "sprite")]
+unique_name_in_owner = true
 script = ExtResource("2_1bnk6")
 node = NodePath("..")
 area_2d = NodePath("../Area2D")
