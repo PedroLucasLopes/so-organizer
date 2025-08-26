@@ -1,5 +1,5 @@
 class_name DragComponent extends Node
-
+## penes
 signal started_snap
 signal snapped
 
