@@ -22,9 +22,6 @@ func _ready() -> void:
 	area_2d.mouse_entered.connect(_on_area_mouse_entered)
 	area_2d.mouse_exited.connect(_on_area_mouse_exited)
 
-func _process(delta: float) -> void:
-	mouse_drag(delta)
-
 func _on_area_mouse_entered() -> void:
 	if current_drag == null:
 		tilt_drag(Vector2(1.2, 1.2))
@@ -34,6 +31,9 @@ func _on_area_mouse_exited() -> void:
 	if current_drag == null:
 		tilt_drag(default_scale)
 		draggable = false
+
+func _process(delta: float) -> void:
+	mouse_drag(delta)
 
 func mouse_drag(delta: float) -> void:
 	if draggable and Input.is_action_pressed("click"):
@@ -53,7 +53,7 @@ func mouse_drag(delta: float) -> void:
 		node.z_index = 0
 
 func snap_object() -> void:
-	var target_pos: Vector2 = node.get_global_mouse_position().snapped(tile_size) + tile_size / 2
+	var target_pos: Vector2 = (node.get_global_mouse_position() / tile_size).floor() * tile_size + tile_size / 2
 	var tween := create_tween()
 	tween.tween_property(node, "global_position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
