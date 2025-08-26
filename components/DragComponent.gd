@@ -7,7 +7,6 @@ class_name DragComponent extends Node
 
 var draggable:bool = false
 var default_scale: Vector2 = Vector2(1, 1)
-var area_entered: bool = false
 
 var occupied_tiles: Array = []
 
@@ -22,6 +21,9 @@ func _ready() -> void:
 	area_2d.mouse_entered.connect(_on_area_mouse_entered)
 	area_2d.mouse_exited.connect(_on_area_mouse_exited)
 
+func _process(delta: float) -> void:
+	mouse_drag(delta)
+	
 func _on_area_mouse_entered() -> void:
 	if current_drag == null:
 		tilt_drag(Vector2(1.2, 1.2))
@@ -31,9 +33,6 @@ func _on_area_mouse_exited() -> void:
 	if current_drag == null:
 		tilt_drag(default_scale)
 		draggable = false
-
-func _process(delta: float) -> void:
-	mouse_drag(delta)
 
 func mouse_drag(delta: float) -> void:
 	if draggable and Input.is_action_pressed("click"):
@@ -56,7 +55,7 @@ func snap_object() -> void:
 	var target_pos: Vector2 = (node.get_global_mouse_position() / tile_size).floor() * tile_size + tile_size / 2
 	var tween := create_tween()
 	tween.tween_property(node, "global_position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
+	
 func tilt_drag(desired_scale: Vector2) -> void:
 	if scale_tween:
 		scale_tween.kill()
