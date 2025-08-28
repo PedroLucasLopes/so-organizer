@@ -1,4 +1,4 @@
-extends TileMapLayer
+extends Node
 
 
 var occupied_positions : Array[Vector2] = []

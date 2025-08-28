@@ -1,5 +1,4 @@
-class_name SOIcon
-extends Node2D
+class_name SOIcon extends Node2D
 
 
 signal attempt_to_snap

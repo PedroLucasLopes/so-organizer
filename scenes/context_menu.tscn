@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://betkb5k86kb6e"]
+
+[ext_resource type="FontFile" uid="uid://b66v0sm5fowoy" path="res://assets/m5x7.ttf" id="1_oog6e"]
+[ext_resource type="Texture2D" uid="uid://cln0xg4p7ao76" path="res://Sprite-0001.png" id="1_yidbp"]
+[ext_resource type="Script" uid="uid://85yotideql25" path="res://scripts/context_menu.gd" id="2_f7y6y"]
+
+[sub_resource type="Theme" id="Theme_yidbp"]
+default_font = ExtResource("1_oog6e")
+
+[node name="ContextMenu" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yidbp")
+script = ExtResource("2_f7y6y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yidbp")
+region_rect = Rect2(48, 16, 32, 16)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+region_rect = Rect2(48, 16, 32, 16)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
+offset_right = 112.0
+offset_bottom = 42.0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Edit"
+alignment = 0
+
+[node name="Button2" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Delete"
+alignment = 0
