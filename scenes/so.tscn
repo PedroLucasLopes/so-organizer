@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cco1opoteo5tp"]
+[gd_scene load_steps=18 format=3 uid="uid://cco1opoteo5tp"]
 
 [ext_resource type="Texture2D" uid="uid://l2myvf1ws5vc" path="res://assets/images/wallpaper_default.png" id="1_dqh6v"]
 [ext_resource type="PackedScene" uid="uid://1v6vqlhqyge4" path="res://scenes/mouse.tscn" id="1_uvtk3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ctpts5h5e3b8p" path="res://scripts/so_grid_layer.gd" id="4_re6bq"]
 [ext_resource type="PackedScene" uid="uid://b80fns02h6um" path="res://scenes/folder.tscn" id="8_re6bq"]
 [ext_resource type="Script" uid="uid://dcqg84yak1se5" path="res://scripts/context_menu_controller.gd" id="9_8rswk"]
+[ext_resource type="Script" uid="uid://17juny5djrse" path="res://scripts/selection_controller.gd" id="10_xp16x"]
 
 [sub_resource type="Animation" id="Animation_xm5no"]
 resource_name = "new_animation"
@@ -77,6 +78,10 @@ position = Vector2(66, 63)
 [node name="SOLogo" parent="." instance=ExtResource("4_jlkqj")]
 position = Vector2(9, 173)
 
+[node name="SelectionRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+color = Color(0.329412, 0.564706, 1, 0.47451)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimationTree")
 libraries = {
@@ -100,6 +105,9 @@ script = ExtResource("4_re6bq")
 [node name="ContextMenuController" type="Node" parent="Utils" node_paths=PackedStringArray("thrash_node")]
 script = ExtResource("9_8rswk")
 thrash_node = NodePath("../../ThrashMarker")
+
+[node name="SelectionController" type="Node" parent="Utils"]
+script = ExtResource("10_xp16x")
 
 [node name="ThrashMarker" type="Marker2D" parent="."]
 position = Vector2(304, 155)
