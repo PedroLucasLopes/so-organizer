@@ -18,6 +18,10 @@ var scale_tween: Tween
 var last_pos: Vector2
 var max_card_rotation: float = 12.5
 
+var clicking: bool = false
+var drag_threshold: float = 5.0
+var click_start_pos: Vector2
+
 var target_pos : Vector2 = Vector2.ZERO
 
 static var current_drag: DragComponent = null
@@ -40,28 +44,43 @@ func _on_area_mouse_exited() -> void:
 		draggable = false
 
 func mouse_drag(delta: float) -> void:
-	if draggable and Input.is_action_pressed("click"):
+	if draggable and Input.is_action_just_pressed("click"):
+		clicking = true
+		click_start_pos = node.get_global_mouse_position()
 		current_drag = self
-		if Input.is_action_just_pressed("click"):
-			started_snap.emit()
-			print("Começou a snapar")
-	
-	if current_drag == self and Input.is_action_pressed("click"):
-		node.global_position = node.get_global_mouse_position()
-		tilt_drag(Vector2(1.2, 1.2))
-		set_rotation(delta)
-		node.z_index = 50
+		started_snap.emit()
 		
+	if current_drag == self and Input.is_action_pressed("click"):
+		var dist = click_start_pos.distance_to(node.get_global_mouse_position())
+		print(dist)
+		
+		if clicking and dist > drag_threshold:
+			clicking = false
+		
+		if clicking:
+			var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+			tween.tween_property(sprite, "scale", Vector2(1.2, 1.2), 0.1)
+			tween.tween_property(sprite, "scale", default_scale, 0.1)
+
+		if not clicking:
+			node.global_position = node.get_global_mouse_position()
+			tilt_drag(Vector2(1.2, 1.2))
+			set_rotation(delta)
+			node.z_index = 50
+	
 	if current_drag == self and Input.is_action_just_released("click"):
+		if not clicking:
+			snap_object()
+		
 		current_drag = null
+		clicking = false
 		tilt_drag(default_scale)
-		snap_object()
 		sprite.rotation_degrees = 0.0
 		node.z_index = 0
 
 func snap_object() -> void:
 	target_pos = (node.get_global_mouse_position() / tile_size).floor() * tile_size + tile_size / 2
-	snapped.emit(target_pos) ## emite um sinal que snappou
+	snapped.emit(target_pos)
 	var tween := create_tween()
 	tween.tween_property(node, "global_position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	

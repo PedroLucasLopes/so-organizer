@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgtr5j6mvd6k3"]
 
-[ext_resource type="Script" uid="uid://crfvhgt55t3rd" path="res://scenes/note.gd" id="1_43c4j"]
+[ext_resource type="Script" uid="uid://crfvhgt55t3rd" path="res://scripts/note.gd" id="1_43c4j"]
 [ext_resource type="Texture2D" uid="uid://b8xtfvmrmgpc3" path="res://assets/images/note.png" id="1_t3yvt"]
 [ext_resource type="Script" uid="uid://4xlrtfaylfy3" path="res://components/DragComponent.gd" id="2_1bnk6"]
 [ext_resource type="Script" uid="uid://b4mrrn53tfkhh" path="res://components/context_menu_component.gd" id="4_njo4t"]
@@ -12,7 +12,6 @@ script = ExtResource("1_43c4j")
 texture = ExtResource("1_t3yvt")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-5, -6, 5, -6, 5, -5, 6, -5, 6, 6, 5, 6, 5, 7, -5, 7, -5, 6, -6, 6, -6, -5, -5, -5)

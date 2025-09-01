@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b80fns02h6um"]
+
+[ext_resource type="Texture2D" uid="uid://lakjenbqhc3g" path="res://assets/images/folder.png" id="1_cgaqj"]
+[ext_resource type="Script" uid="uid://vs8nemjkqi8c" path="res://scripts/folder.gd" id="1_mpvgd"]
+[ext_resource type="Script" uid="uid://4xlrtfaylfy3" path="res://components/DragComponent.gd" id="2_abgot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgaqj"]
+size = Vector2(11, 8)
+
+[node name="Folder" type="Node2D"]
+script = ExtResource("1_mpvgd")
+
+[node name="Base" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Base"]
+texture = ExtResource("1_cgaqj")
+hframes = 2
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="Base"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_cgaqj")
+
+[node name="DragComponent" type="Node" parent="." node_paths=PackedStringArray("node", "area_2d", "sprite")]
+unique_name_in_owner = true
+script = ExtResource("2_abgot")
+node = NodePath("..")
+area_2d = NodePath("../Base/Area2D")
+sprite = NodePath("../Base/Sprite2D")
+tile_size = Vector2(16, 16)
+metadata/_custom_type_script = "uid://4xlrtfaylfy3"
