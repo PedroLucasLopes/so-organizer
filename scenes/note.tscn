@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgtr5j6mvd6k3"]
+[gd_scene load_steps=5 format=3 uid="uid://bgtr5j6mvd6k3"]
 
 [ext_resource type="Script" uid="uid://crfvhgt55t3rd" path="res://scripts/note.gd" id="1_43c4j"]
 [ext_resource type="Texture2D" uid="uid://b8xtfvmrmgpc3" path="res://assets/images/note.png" id="1_t3yvt"]
 [ext_resource type="Script" uid="uid://4xlrtfaylfy3" path="res://components/DragComponent.gd" id="2_1bnk6"]
+[ext_resource type="Script" uid="uid://b4mrrn53tfkhh" path="res://components/context_menu_component.gd" id="4_njo4t"]
 
 [node name="Note" type="Node2D"]
 script = ExtResource("1_43c4j")
@@ -23,3 +24,10 @@ area_2d = NodePath("../Area2D")
 sprite = NodePath("../Sprite2D")
 tile_size = Vector2(16, 16)
 metadata/_custom_type_script = "uid://4xlrtfaylfy3"
+
+[node name="ContextMenuComponent" type="Node" parent="." node_paths=PackedStringArray("node", "area_2d", "sprite")]
+unique_name_in_owner = true
+script = ExtResource("4_njo4t")
+node = NodePath("..")
+area_2d = NodePath("../Area2D")
+sprite = NodePath("../Sprite2D")
