@@ -1,12 +1,48 @@
-[gd_scene load_steps=16 format=3 uid="uid://cco1opoteo5tp"]
+[gd_scene load_steps=17 format=3 uid="uid://cco1opoteo5tp"]
 
 [ext_resource type="Texture2D" uid="uid://l2myvf1ws5vc" path="res://assets/images/wallpaper_default.png" id="1_dqh6v"]
 [ext_resource type="PackedScene" uid="uid://1v6vqlhqyge4" path="res://scenes/mouse.tscn" id="1_uvtk3"]
 [ext_resource type="PackedScene" uid="uid://df7vj2rsp5ywq" path="res://scenes/task_manager.tscn" id="1_x8ele"]
 [ext_resource type="PackedScene" uid="uid://bgtr5j6mvd6k3" path="res://scenes/note.tscn" id="3_28fkv"]
+[ext_resource type="Texture2D" uid="uid://cln0xg4p7ao76" path="res://Sprite-0001.png" id="3_xm5no"]
 [ext_resource type="PackedScene" uid="uid://cj6m1gc61t8py" path="res://scenes/so_logo.tscn" id="4_jlkqj"]
 [ext_resource type="Script" uid="uid://ctpts5h5e3b8p" path="res://scripts/so_grid_layer.gd" id="4_re6bq"]
 [ext_resource type="PackedScene" uid="uid://b80fns02h6um" path="res://scenes/folder.tscn" id="8_re6bq"]
+[ext_resource type="Script" uid="uid://dcqg84yak1se5" path="res://scripts/context_menu_controller.gd" id="9_8rswk"]
+
+[sub_resource type="Animation" id="Animation_xm5no"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_re6bq"]
+resource_name = "new_animation_2"
+
+[sub_resource type="Animation" id="Animation_8rswk"]
+resource_name = "new_animation_3"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xp16x"]
+_data = {
+&"new_animation": SubResource("Animation_xm5no"),
+&"new_animation_2": SubResource("Animation_re6bq"),
+&"new_animation_3": SubResource("Animation_8rswk")
+}
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_74v4d"]
+graph_offset = Vector2(-270.826, 52.4967)
+nodes/output/position = Vector2(213.333, 133.333)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re6bq"]
+texture = ExtResource("3_xm5no")
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+16:12/0 = 0
+15:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8rswk"]
+sources/0 = SubResource("TileSetAtlasSource_re6bq")
 
 [node name="SO" type="Node2D"]
 
@@ -20,16 +56,26 @@ texture = ExtResource("1_dqh6v")
 [node name="TaskManager" parent="." instance=ExtResource("1_x8ele")]
 position = Vector2(160, 172)
 
+[node name="Note4" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(204, 30)
+
+[node name="Note5" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(263, 36)
+
+[node name="Note3" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(222, 88)
+
+[node name="Note6" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(71, 40)
+
+[node name="Note2" parent="." instance=ExtResource("3_28fkv")]
+position = Vector2(105, 42)
+
 [node name="Note" parent="." instance=ExtResource("3_28fkv")]
 position = Vector2(66, 63)
 
 [node name="SOLogo" parent="." instance=ExtResource("4_jlkqj")]
 position = Vector2(9, 173)
-
-[node name="Utils" type="Node" parent="."]
-
-[node name="SOGridUtil" type="Node" parent="Utils"]
-script = ExtResource("4_re6bq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimationTree")
@@ -44,3 +90,16 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="Folder" parent="." instance=ExtResource("8_re6bq")]
 position = Vector2(145, 98)
+
+[node name="Utils" type="Node" parent="."]
+
+[node name="SOGridUtil" type="TileMapLayer" parent="Utils"]
+tile_set = SubResource("TileSet_8rswk")
+script = ExtResource("4_re6bq")
+
+[node name="ContextMenuController" type="Node" parent="Utils" node_paths=PackedStringArray("thrash_node")]
+script = ExtResource("9_8rswk")
+thrash_node = NodePath("../../ThrashMarker")
+
+[node name="ThrashMarker" type="Marker2D" parent="."]
+position = Vector2(304, 155)

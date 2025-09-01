@@ -61,12 +61,14 @@ offset_bottom = 42.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/separation = 0
 
-[node name="Button" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="EditButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Edit"
 alignment = 0
 
-[node name="Button2" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="DeleteButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Delete"
 alignment = 0
