@@ -34,4 +34,8 @@ func enter_the_folder(other_area: Area2D) -> void:
 	if other_area and is_instance_valid(other_area):
 		var parent = other_area.get_parent()
 		if parent and is_instance_valid(parent) and parent.has_method("enter_folder"):
+			var world = parent.get_parent()
 			parent.enter_folder()
+			parent.global_position = world.global_position
+			world.remove_child(parent)
+			files.add_child(parent)

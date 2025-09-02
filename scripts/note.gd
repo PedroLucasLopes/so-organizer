@@ -32,4 +32,4 @@ func enter_folder() -> void:
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_IN)
 	
-	tween.tween_callback(Callable(self, "queue_free"))
+	await tween.finished
