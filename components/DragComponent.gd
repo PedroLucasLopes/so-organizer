@@ -52,6 +52,10 @@ func mouse_drag(delta: float) -> void:
 		
 	if current_drag == self and Input.is_action_pressed("click"):
 		var dist = click_start_pos.distance_to(node.get_global_mouse_position())
+<<<<<<< HEAD
+=======
+		#print(dist)
+>>>>>>> 696dda70907064d2459404e31767125cd0c34112
 		
 		if clicking and dist > drag_threshold:
 			clicking = false
