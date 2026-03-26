@@ -8,6 +8,8 @@ signal snapped
 @export var sprite: Sprite2D
 @export var tile_size: Vector2
 
+@export var contexto_id : String = "desktop" ## aqui vai verificar o contexto
+
 var draggable:bool = false
 var default_scale: Vector2 = Vector2(1, 1)
 
@@ -32,25 +34,32 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	mouse_drag(delta)
-	
+
 func _on_area_mouse_entered() -> void:
-	if current_drag == null:
+	if DesktopState.can_interact(contexto_id):
+		DesktopState.current_state = DesktopState.State.HOVERING
 		tilt_drag(Vector2(1.2, 1.2))
 		draggable = true
 
 func _on_area_mouse_exited() -> void:
-	if current_drag == null:
+	if DesktopState.dragged_item == null:
+		DesktopState.current_state = DesktopState.State.IDLE
 		tilt_drag(default_scale)
 		draggable = false
 
 func mouse_drag(delta: float) -> void:
+	
+	## quando clicar 
 	if draggable and Input.is_action_just_pressed("click"):
+		print("drag")
 		clicking = true
 		click_start_pos = node.get_global_mouse_position()
-		current_drag = self
+		DesktopState.current_state = DesktopState.State.DRAGGING
+		DesktopState.dragged_item = self.node
 		started_snap.emit()
-		
-	if current_drag == self and Input.is_action_pressed("click"):
+	
+	## quando estiver arrastando
+	if DesktopState.dragged_item == self.node and Input.is_action_pressed("click"):
 		var dist = click_start_pos.distance_to(node.get_global_mouse_position())
 		
 		if clicking and dist > drag_threshold:
@@ -67,11 +76,13 @@ func mouse_drag(delta: float) -> void:
 			set_rotation(delta)
 			node.z_index = 50
 	
-	if current_drag == self and Input.is_action_just_released("click"):
+	## quando soltar o objeto
+	if DesktopState.dragged_item == self.node and Input.is_action_just_released("click"):
 		if not clicking:
 			snap_object()
 		
-		current_drag = null
+		DesktopState.dragged_item = null
+		DesktopState.current_state = DesktopState.State.HOVERING
 		clicking = false
 		tilt_drag(default_scale)
 		sprite.rotation_degrees = 0.0
