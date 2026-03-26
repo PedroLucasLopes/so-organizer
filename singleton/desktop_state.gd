@@ -1,6 +1,6 @@
 extends Node
 
-## controla o estado do desktop
+## DESKTOP STATE -> tem vários states que vai controlar o jogo
 
 enum State {IDLE, HOVERING, DRAGGING, SELECTING, CONTEXT_MENU}
 
