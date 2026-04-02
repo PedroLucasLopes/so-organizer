@@ -7,7 +7,11 @@
 [sub_resource type="Theme" id="Theme_yidbp"]
 default_font = ExtResource("1_oog6e")
 
+<<<<<<< HEAD
 [node name="ContextMenu" type="Control" unique_id=474552240]
+=======
+[node name="ContextMenu" type="Control" unique_id=1495584532]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -20,7 +24,11 @@ grow_vertical = 2
 theme = SubResource("Theme_yidbp")
 script = ExtResource("2_f7y6y")
 
+<<<<<<< HEAD
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2128943769]
+=======
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=348774105]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +42,11 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
+<<<<<<< HEAD
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=717129940]
+=======
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2061891275]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +58,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
+<<<<<<< HEAD
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=1684844896]
+=======
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=329436960]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 layout_mode = 2
 region_rect = Rect2(48, 16, 32, 16)
 patch_margin_left = 1
@@ -54,20 +70,32 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
+<<<<<<< HEAD
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect" unique_id=442682678]
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect" unique_id=95653192]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 layout_mode = 1
 offset_right = 112.0
 offset_bottom = 42.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/separation = 0
 
+<<<<<<< HEAD
 [node name="EditButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=1658172305]
+=======
+[node name="EditButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=524765182]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 unique_name_in_owner = true
 layout_mode = 2
 text = "Edit"
 alignment = 0
 
+<<<<<<< HEAD
 [node name="DeleteButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=499588614]
+=======
+[node name="DeleteButton" type="Button" parent="MarginContainer/NinePatchRect/VBoxContainer" unique_id=163780733]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 unique_name_in_owner = true
 layout_mode = 2
 text = "Delete"

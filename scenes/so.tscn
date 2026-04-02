@@ -9,7 +9,25 @@
 [ext_resource type="Script" uid="uid://ctpts5h5e3b8p" path="res://scripts/so_grid_layer.gd" id="4_re6bq"]
 [ext_resource type="PackedScene" uid="uid://b80fns02h6um" path="res://scenes/folder.tscn" id="8_re6bq"]
 [ext_resource type="Script" uid="uid://dcqg84yak1se5" path="res://scripts/context_menu_controller.gd" id="9_8rswk"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dru83728iov5y" path="res://scenes/crt.tscn" id="10_xp16x"]
+=======
+[ext_resource type="Script" uid="uid://17juny5djrse" path="res://scripts/selection_controller.gd" id="10_xp16x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re6bq"]
+texture = ExtResource("3_xm5no")
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+16:12/0 = 0
+15:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8rswk"]
+sources/0 = SubResource("TileSetAtlasSource_re6bq")
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 
 [sub_resource type="Animation" id="Animation_xm5no"]
 resource_name = "new_animation"
@@ -28,32 +46,26 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_74v4d"]
-graph_offset = Vector2(-270.826, 52.4967)
 nodes/output/position = Vector2(213.333, 133.333)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re6bq"]
-texture = ExtResource("3_xm5no")
-15:13/0 = 0
-16:13/0 = 0
-17:13/0 = 0
-16:12/0 = 0
-15:12/0 = 0
-17:12/0 = 0
-18:12/0 = 0
-1:1/0 = 0
+[node name="SO" type="Node2D" unique_id=2115638736]
 
-[sub_resource type="TileSet" id="TileSet_8rswk"]
-sources/0 = SubResource("TileSetAtlasSource_re6bq")
+[node name="Mouse" parent="." unique_id=456778968 instance=ExtResource("1_uvtk3")]
 
+<<<<<<< HEAD
 [node name="SO" type="Node2D" unique_id=2080935546]
 
 [node name="Mouse" parent="." unique_id=982523950 instance=ExtResource("1_uvtk3")]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=978886465]
+=======
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1438173505]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("1_dqh6v")
 
+<<<<<<< HEAD
 [node name="TaskManager" parent="." unique_id=473205710 instance=ExtResource("1_x8ele")]
 position = Vector2(160, 172)
 
@@ -83,10 +95,59 @@ root_node = NodePath("../AnimationTree")
 libraries/ = SubResource("AnimationLibrary_xp16x")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1515417883]
+=======
+[node name="TaskManager" parent="." unique_id=924258368 instance=ExtResource("1_x8ele")]
+position = Vector2(160, 172)
+
+[node name="Note4" parent="." unique_id=193422885 instance=ExtResource("3_28fkv")]
+position = Vector2(204, 30)
+
+[node name="Note5" parent="." unique_id=1594764136 instance=ExtResource("3_28fkv")]
+position = Vector2(263, 36)
+
+[node name="Note3" parent="." unique_id=1634052683 instance=ExtResource("3_28fkv")]
+position = Vector2(222, 88)
+
+[node name="Note6" parent="." unique_id=1970835075 instance=ExtResource("3_28fkv")]
+position = Vector2(71, 40)
+
+[node name="Note2" parent="." unique_id=1608702359 instance=ExtResource("3_28fkv")]
+position = Vector2(105, 42)
+
+[node name="Note" parent="." unique_id=1268677084 instance=ExtResource("3_28fkv")]
+position = Vector2(66, 63)
+
+[node name="SOLogo" parent="." unique_id=822036524 instance=ExtResource("4_jlkqj")]
+position = Vector2(9, 173)
+
+[node name="Utils" type="Node" parent="." unique_id=1364601076]
+
+[node name="SOGridUtil" type="TileMapLayer" parent="Utils" unique_id=2060068519]
+tile_set = SubResource("TileSet_8rswk")
+script = ExtResource("4_re6bq")
+
+[node name="ContextMenuController" type="Node" parent="Utils" unique_id=607232656 node_paths=PackedStringArray("thrash_node")]
+script = ExtResource("9_8rswk")
+thrash_node = NodePath("../../ThrashMarker")
+
+[node name="SelectionController" type="Node" parent="Utils" unique_id=1867168311]
+script = ExtResource("10_xp16x")
+
+[node name="SelectionRect" type="ColorRect" parent="." unique_id=42067895]
+unique_name_in_owner = true
+color = Color(0.329412, 0.564706, 1, 0.47451)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=109023643]
+root_node = NodePath("../AnimationTree")
+libraries/ = SubResource("AnimationLibrary_xp16x")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1396335728]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 root_node = NodePath(".")
 tree_root = SubResource("AnimationNodeBlendTree_74v4d")
 anim_player = NodePath("../AnimationPlayer")
 
+<<<<<<< HEAD
 [node name="Folder" parent="." unique_id=925849480 instance=ExtResource("8_re6bq")]
 position = Vector2(145, 98)
 
@@ -101,6 +162,12 @@ script = ExtResource("9_8rswk")
 thrash_node = NodePath("../../ThrashMarker")
 
 [node name="ThrashMarker" type="Marker2D" parent="." unique_id=1726739778]
+=======
+[node name="Folder" parent="." unique_id=1720031996 instance=ExtResource("8_re6bq")]
+position = Vector2(145, 98)
+
+[node name="ThrashMarker" type="Marker2D" parent="." unique_id=1174799085]
+>>>>>>> 492192865a618a9e9f5e3a1ebe358414011ddb1c
 position = Vector2(304, 155)
 
 [node name="CRT" parent="." unique_id=2089330394 instance=ExtResource("10_xp16x")]
