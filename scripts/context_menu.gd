@@ -15,6 +15,5 @@ func reveal_context_menu(context_menu_size : Vector2) -> void:
 	tween.tween_property(self, "size:x", context_menu_size.x, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "size:y", context_menu_size.y, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 
-
 func _on_context_menu_button_pressed(command : ContextMenuCommand) -> void:
 	context_menu_button_pressed.emit(command)

@@ -3,7 +3,6 @@ class_name SOIcon extends Node2D
 signal attempt_to_snap
 signal context_menu_button_clicked
 
-
 @onready var drag_component: DragComponent = %DragComponent
 @onready var context_menu_component: ContextMenuComponent = %ContextMenuComponent
 

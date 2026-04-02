@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dru83728iov5y"]
+
+[ext_resource type="Shader" uid="uid://bpqmnyboktybm" path="res://shader/crt.gdshader" id="1_n4iqi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wnyem"]
+shader = ExtResource("1_n4iqi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_po0h8"]
+size = Vector2(320, 180)
+
+[node name="CRT" type="CanvasLayer" unique_id=2089330394]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1969806370]
+material = SubResource("ShaderMaterial_wnyem")
+mesh = SubResource("QuadMesh_po0h8")

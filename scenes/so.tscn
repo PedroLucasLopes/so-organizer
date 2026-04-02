@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cco1opoteo5tp"]
+[gd_scene format=3 uid="uid://cco1opoteo5tp"]
 
 [ext_resource type="Texture2D" uid="uid://l2myvf1ws5vc" path="res://assets/images/wallpaper_default.png" id="1_dqh6v"]
 [ext_resource type="PackedScene" uid="uid://1v6vqlhqyge4" path="res://scenes/mouse.tscn" id="1_uvtk3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ctpts5h5e3b8p" path="res://scripts/so_grid_layer.gd" id="4_re6bq"]
 [ext_resource type="PackedScene" uid="uid://b80fns02h6um" path="res://scenes/folder.tscn" id="8_re6bq"]
 [ext_resource type="Script" uid="uid://dcqg84yak1se5" path="res://scripts/context_menu_controller.gd" id="9_8rswk"]
+[ext_resource type="PackedScene" uid="uid://dru83728iov5y" path="res://scenes/crt.tscn" id="10_xp16x"]
 
 [sub_resource type="Animation" id="Animation_xm5no"]
 resource_name = "new_animation"
@@ -44,62 +45,64 @@ texture = ExtResource("3_xm5no")
 [sub_resource type="TileSet" id="TileSet_8rswk"]
 sources/0 = SubResource("TileSetAtlasSource_re6bq")
 
-[node name="SO" type="Node2D"]
+[node name="SO" type="Node2D" unique_id=2080935546]
 
-[node name="Mouse" parent="." instance=ExtResource("1_uvtk3")]
+[node name="Mouse" parent="." unique_id=982523950 instance=ExtResource("1_uvtk3")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=978886465]
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("1_dqh6v")
 
-[node name="TaskManager" parent="." instance=ExtResource("1_x8ele")]
+[node name="TaskManager" parent="." unique_id=473205710 instance=ExtResource("1_x8ele")]
 position = Vector2(160, 172)
 
-[node name="Note4" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note4" parent="." unique_id=712323398 instance=ExtResource("3_28fkv")]
 position = Vector2(204, 30)
 
-[node name="Note5" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note5" parent="." unique_id=126711088 instance=ExtResource("3_28fkv")]
 position = Vector2(263, 36)
 
-[node name="Note3" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note3" parent="." unique_id=513568771 instance=ExtResource("3_28fkv")]
 position = Vector2(222, 88)
 
-[node name="Note6" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note6" parent="." unique_id=1155949845 instance=ExtResource("3_28fkv")]
 position = Vector2(71, 40)
 
-[node name="Note2" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note2" parent="." unique_id=247710044 instance=ExtResource("3_28fkv")]
 position = Vector2(105, 42)
 
-[node name="Note" parent="." instance=ExtResource("3_28fkv")]
+[node name="Note" parent="." unique_id=1713006100 instance=ExtResource("3_28fkv")]
 position = Vector2(66, 63)
 
-[node name="SOLogo" parent="." instance=ExtResource("4_jlkqj")]
+[node name="SOLogo" parent="." unique_id=2058428764 instance=ExtResource("4_jlkqj")]
 position = Vector2(9, 173)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1342049252]
 root_node = NodePath("../AnimationTree")
-libraries = {
-&"": SubResource("AnimationLibrary_xp16x")
-}
+libraries/ = SubResource("AnimationLibrary_xp16x")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1515417883]
 root_node = NodePath(".")
 tree_root = SubResource("AnimationNodeBlendTree_74v4d")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Folder" parent="." instance=ExtResource("8_re6bq")]
+[node name="Folder" parent="." unique_id=925849480 instance=ExtResource("8_re6bq")]
 position = Vector2(145, 98)
 
-[node name="Utils" type="Node" parent="."]
+[node name="Utils" type="Node" parent="." unique_id=777136533]
 
-[node name="SOGridUtil" type="TileMapLayer" parent="Utils"]
+[node name="SOGridUtil" type="TileMapLayer" parent="Utils" unique_id=1416627913]
 tile_set = SubResource("TileSet_8rswk")
 script = ExtResource("4_re6bq")
 
-[node name="ContextMenuController" type="Node" parent="Utils" node_paths=PackedStringArray("thrash_node")]
+[node name="ContextMenuController" type="Node" parent="Utils" unique_id=169102519 node_paths=PackedStringArray("thrash_node")]
 script = ExtResource("9_8rswk")
 thrash_node = NodePath("../../ThrashMarker")
 
-[node name="ThrashMarker" type="Marker2D" parent="."]
+[node name="ThrashMarker" type="Marker2D" parent="." unique_id=1726739778]
 position = Vector2(304, 155)
+
+[node name="CRT" parent="." unique_id=2089330394 instance=ExtResource("10_xp16x")]
+offset = Vector2(160, 90)
+transform = Transform2D(1, 0, 0, 1, 160, 90)
